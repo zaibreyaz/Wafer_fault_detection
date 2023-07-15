@@ -13,7 +13,9 @@ from src.constant import *
 from src.exception import CustomException
 from src.logger import logging
 from src.utils.main_utils import MainUtils
+
 from dataclasses import dataclass
+
 
 @dataclass
 class DataTransformationConfig:
@@ -21,8 +23,6 @@ class DataTransformationConfig:
     transformed_train_file_path=os.path.join(artifact_dir, 'train.npy')
     transformed_test_file_path=os.path.join(artifact_dir, 'test.npy') 
     transformed_object_file_path=os.path.join( artifact_dir, 'preprocessor.pkl' )
-
-
 
 
 
@@ -103,8 +103,7 @@ class DataTransformation:
         try:
             dataframe = self.get_data(feature_store_file_path=self.feature_store_file_path)
            
-            
-            
+
             X = dataframe.drop(columns= TARGET_COLUMN)
             y = np.where(dataframe[TARGET_COLUMN]==-1,0, 1)  #replacing the -1 with 0 for model training
             
@@ -118,7 +117,6 @@ class DataTransformation:
             X_train_scaled =  preprocessor.fit_transform(X_train)
             X_test_scaled  =  preprocessor.transform(X_test)
 
-            
 
 
             preprocessor_path = self.data_transformation_config.transformed_object_file_path

@@ -77,8 +77,6 @@ class ModelTrainer:
                     x_test:np.array, 
                     y_test: np.array):
         try:
-            
-             
 
             model_report: dict = self.evaluate_models(
                  x_train =  x_train, 
@@ -151,13 +149,8 @@ class ModelTrainer:
                 test_array[:, -1],
             )
 
-            
 
             logging.info(f"Extracting model config file path")
-
-
-            
-
 
 
             logging.info(f"Extracting model config file path")
@@ -211,8 +204,6 @@ class ModelTrainer:
             )
             
             return self.model_trainer_config.trained_model_path
-
-            
 
             
 
